@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const userContext = createContext();
 
@@ -10,12 +10,8 @@ export const useUserContext = () => {
 
 export default function UserProvider({ children }) {
   const [data, setData] = useState();
-  const userFromLocalStorage = JSON.parse(localStorage.getItem("user")) || [];
-  const [user, setUser] = useState(userFromLocalStorage);
-
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
-  }, [data, user]);
+  const [user, setUser] = useState([]);
+  const [userExists, setUserExists] = useState(false);
 
   const getUser = async () => {
     try {
@@ -28,6 +24,7 @@ export default function UserProvider({ children }) {
       if (response.ok) {
         const info = await response.json();
         setUser(info);
+        setUserExists(true);
       }
     } catch {
       console.log("error");
@@ -41,6 +38,7 @@ export default function UserProvider({ children }) {
         setData,
         user,
         getUser,
+        userExists,
       }}
     >
       {children}
