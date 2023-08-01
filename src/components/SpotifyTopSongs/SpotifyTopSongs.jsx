@@ -26,7 +26,7 @@ export default function SpotifyTopSongs() {
       setInfoSongs(topSongsData);
       const songs = topSongsData.items;
       setTopSongs(songs);
-    } catch {
+    } catch (error) {
       console.log(error);
     }
   };

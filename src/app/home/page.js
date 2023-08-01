@@ -11,6 +11,8 @@ export default function Page() {
     console.log("Ejecutado");
   }, [data]);
 
+  console.log(user);
+
   return (
     <>
       {userExists && (
@@ -18,7 +20,7 @@ export default function Page() {
           <main className="flex min-[1024px]:flex-row justify-center items-center mt-5 min-[320px]:flex-col mb-[50px] font-bold">
             <img
               className="w-[200px] rounded-full"
-              src={user.images[1].url}
+              src={user?.images[1]?.url}
               alt="logo-user"
             />
             <div className="flex flex-col justify-center p-3">
