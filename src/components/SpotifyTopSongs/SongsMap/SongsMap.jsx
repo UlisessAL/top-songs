@@ -1,6 +1,4 @@
 const SongsMap = ({ songs }) => {
-  console.log(songs);
-
   const summarySong = (name, artists) => {
     const newArtists = artists.map((artist) => artist.name).join(", ");
     const song = name + " - " + newArtists;

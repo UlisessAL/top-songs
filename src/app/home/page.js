@@ -5,14 +5,11 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
   const { data, getUser, user, userExists } = useUserContext();
-  console.log(data);
 
   useEffect(() => {
     getUser();
     console.log("Ejecutado");
   }, [data]);
-  console.log(user);
-  console.log(userExists);
 
   return (
     <>
