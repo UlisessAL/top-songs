@@ -14,6 +14,7 @@ export default function Callback() {
     if (getID) {
       router.push("/home");
     }
+    console.log(getID);
   }, [router, setData]);
 
   return <div>Loading...</div>;
