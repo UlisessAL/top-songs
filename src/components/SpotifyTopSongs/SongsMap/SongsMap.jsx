@@ -21,7 +21,7 @@ const SongsMap = ({ songs }) => {
         >
           <img src={song.album.images[0].url} className="h-[50px] w-[50px]" />
           <li>
-            {songs.length > 3 ? index + 3 : index + 1}.{" "}
+            {songs.length > 3 ? index + 4 : index + 1}.{" "}
             {summarySong(song.name, song.artists)}
           </li>
         </div>
