@@ -1,7 +1,7 @@
 "use client";
 import SpotifyTopSongs from "@/components/SpotifyTopSongs/SpotifyTopSongs";
 import { useUserContext } from "@/context/UserContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Page() {
   const { data, getUser, user, userExists } = useUserContext();

@@ -4,11 +4,25 @@ export default function page() {
   const client_id = process.env.CLIENT_ID;
   const redirect_uri = process.env.REDIRECT_URI;
   const scopes = [
-    "user-top-read",
     "user-read-private",
     "user-library-read",
     "playlist-read-private",
     "user-read-email",
+    "user-read-recently-played",
+    "user-read-playback-position",
+    "user-read-playback-state",
+    "user-modify-playback-state",
+    "user-read-currently-playing",
+    "app-remote-control",
+    "streaming",
+    "playlist-read-collaborative",
+    "playlist-modify-private",
+    "playlist-modify-public",
+    "user-follow-modify",
+    "user-follow-read",
+    "user-library-modify",
+    "user-library-read",
+    "user-top-read",
   ];
 
   const authURL = `https://accounts.spotify.com/authorize?response_type=token&client_id=${client_id}&redirect_uri=${encodeURIComponent(

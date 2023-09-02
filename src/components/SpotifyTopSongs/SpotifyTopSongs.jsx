@@ -6,28 +6,33 @@ import SongsMap from "./SongsMap/SongsMap";
 
 export default function SpotifyTopSongs() {
   const [topSongs, setTopSongs] = useState([]);
-  const [infoSongs, setInfoSongs] = useState([]);
   const [showSongs, setShowSongs] = useState(false);
   const { data } = useUserContext();
-  const dataId = data;
 
   const getTopSongs = async () => {
     try {
-      const topSongsResponse = await fetch(
-        `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`,
-        {
-          headers: {
-            Authorization: `Bearer ${dataId}`,
-          },
-        }
-      );
+      const access_token = data;
 
-      const topSongsData = await topSongsResponse.json();
-      setInfoSongs(topSongsData);
-      const songs = topSongsData.items;
-      setTopSongs(songs);
+      const url = `https://api.spotify.com/v1/me/top/tracks`;
+      const params = new URLSearchParams({
+        limit: 20,
+        time_range: "short_term",
+      });
+
+      console.log(access_token);
+
+      const newUrl = `${url}?${params.toString()}`;
+      const response = await fetch(newUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      const songs = await response.json();
+      setTopSongs(songs.items);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
